@@ -1,2 +1,2 @@
-# maestro-spartito
-Spartito Service Discovery for Maestro cluster
+# maestro-violino
+Violino Nginx Proxy for Maestro cluster
