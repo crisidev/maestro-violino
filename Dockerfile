@@ -16,7 +16,12 @@ ADD nginx.toml nginx.toml
 WORKDIR /etc/confd/templates
 ADD nginx.tmpl nginx.tmpl
 
-RUN rm /etc/nginx/sites-enabled/default
+WORKDIR /etc/nginx/sites-available
+ADD default.conf default
+
+WORKDIR /var/www/html
+ADD index.html index.html
+ADD maestro.jpg maestro.jpg
 
 WORKDIR /etc/confd
 RUN mkdir violino
