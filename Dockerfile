@@ -19,6 +19,9 @@ ADD nginx.tmpl nginx.tmpl
 WORKDIR /etc/nginx/sites-available
 ADD default.conf default
 
+WORKDIR /etc/nginx
+ADD nginx.conf nginx.conf
+
 WORKDIR /var/www/html
 ADD index.html index.html
 ADD maestro.jpg maestro.jpg
