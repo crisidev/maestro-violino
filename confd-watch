@@ -8,14 +8,14 @@ export ETCD=http://$ETCD_HOST:$ETCD_PORT
 echo "[nginx] booting container. etcd: $ETCD."
 
 # Try to make initial configuration every 5 seconds until successful
-until confd -onetime -backend etcd -node $ETCD -config-file /etc/confd/conf.d/nginx.toml; do
+until confd -onetime -backend etcd -node $ETCD; do
     echo "[nginx] waiting for confd to create initial nginx configuration."
     sleep 5
 done
 
 # Put a continual polling `confd` process into the background to watch
 # for changes every 10 seconds
-confd -interval 10 -backend etcd -node $ETCD -config-file /etc/confd/conf.d/nginx.toml &
+confd -interval 10 -backend etcd -node $ETCD &
 echo "[nginx] confd is now monitoring etcd for changes..."
 
 # Start the Nginx service using the generated config

@@ -12,9 +12,11 @@ RUN mkdir -p /etc/confd/conf.d /etc/confd/templates
 
 WORKDIR /etc/confd/conf.d
 ADD nginx.toml nginx.toml
+ADD scraper.toml scraper.toml
 
 WORKDIR /etc/confd/templates
 ADD nginx.tmpl nginx.tmpl
+ADD scraper.tmpl scraper.tmpl
 
 WORKDIR /etc/nginx/sites-available
 ADD default.conf default
@@ -25,6 +27,7 @@ ADD nginx.conf nginx.conf
 WORKDIR /var/www/html
 ADD index.html index.html
 ADD maestro.jpg maestro.jpg
+ADD back.jpg back.jpg
 
 WORKDIR /etc/confd
 RUN mkdir violino
