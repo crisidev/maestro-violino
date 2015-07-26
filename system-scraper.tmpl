@@ -1,75 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style>
-html,body {
-  background: url(back.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover; /* For WebKit*/
-  -moz-background-size: cover;    /* Mozilla*/
-  -o-background-size: cover;      /* Opera*/
-  background-size: cover;         /* Generic*/
-}
-div.title {
-  position:relative;
-  font-family: "Helvetica Nueue", Helvetica;
-  font-size: 40px;
-  font-weight: bold;
-  text-shadow: 1px 6px 9px #000;
-  color: #b8b8b8;
-  margin-top: 5px;
-}
-div.normal {
-  position:relative;
-  font-family: "Helvetica Nueue", Helvetica;
-  font-size: 15px;
-  font-weight: bold;
-  text-shadow: 1px 6px 9px #000;
-  color: #588aab;
-  margin-top: 2px;
-  margin-left: 5px;
-}
-div.clickable {
-  position:relative;
-  font-family: "Helvetica Nueue", Helvetica;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 1px 6px 9px #000;
-  color: #758664;
-  margin-top: 15px;
-  margin-left: 20px;
-}
-div.clickable a {
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  text-decoration:none; /* Makes sure the link   doesn't get underlined */
-  z-index:10; /* raises anchor tag above everything else in div */
-  background-color:white; /*workaround to make clickable in IE */
-  opacity: 0; /*workaround to make clickable in IE */
-  filter: alpha(opacity=1); /*workaround to make clickable in IE */
-}
-ul {
-  list-style-type: none;
-}
-span {
-  color: #b8b8b8;
-}
+      <link rel="stylesheet" type="text/css" href="maestro.css">
     </style>
   </head>
   <body>
 <center><div class="title">Maestro System DNS</div></center>
 {{range gets "/maestro.io/apps/*"}}{{$upstream := json .Value}}{{$skydnsdir := printf "%s/*" $upstream.watchdir}}
 {{$dns := base .Key}}
+   <div class="clickable"><a href="http://{{$dns}}.maestro.io"> </a>
+  <span class="green">{{$dns}}.maestro.io</span>
+   </div>
 {{range gets $skydnsdir}}
 {{$rr := json .Value}}{{$txt := json $rr.text}}
-   <div class="clickable"><a href="http://{{$dns}}.maestro.io"> </a>
-  {{$dns}}.maestro.io
-   </div>
    <div class="normal">
-  <span>user:</span> {{$txt.username}} <span>stage:</span> {{$txt.stage}} <span>app:</span> {{$txt.app}} <span>component:</span> {{$txt.component}}
+  <span class="grey">user:</span> {{$txt.username}} <span class="grey">stage:</span> {{$txt.stage}} <span class="grey">app:</span> {{$txt.app}} <span class="grey">component:</span> {{$txt.component}} <span class="grey">dns:</span> {{$txt.dns}} <span class="grey">ip:</span> {{$rr.host}}
    </div>
 {{end}}{{end}}
   </body>

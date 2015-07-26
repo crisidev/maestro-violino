@@ -2,41 +2,17 @@
 <html>
   <head>
     <style>
-html,body {
-  background: url(maestro.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover; /* For WebKit*/
-  -moz-background-size: cover;    /* Mozilla*/
-  -o-background-size: cover;      /* Opera*/
-  background-size: cover;         /* Generic*/
-}
-div.clickable {
-  position:relative;
-  font-family: "Helvetica Nueue", Helvetica;
-  font-size: 30px;
-  font-weight: bold;
-  text-shadow: 1px 6px 9px #000;
-  color: #b8b8b8;
-  margin-top: 30px;
-  margin-left: 30px;
-}
-div.clickable a {
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  text-decoration:none; /* Makes sure the link   doesn't get underlined */
-  z-index:10; /* raises anchor tag above everything else in div */
-  background-color:white; /*workaround to make clickable in IE */
-  opacity: 0; /*workaround to make clickable in IE */
-  filter: alpha(opacity=1); /*workaround to make clickable in IE */
-}
+      <link rel="stylesheet" type="text/css" href="maestro.css">
     </style>
   </head>
   <body>
-    <div class="clickable">
+    <div class="defaultclickable">
       <a href="apps"> </a>
       Click HERE for available apps!
+    </div>
+    <div class="defaultclickable">
+      <a href="sys"> </a>
+      Click HERE for system DNS!
     </div>
   </body>
 </html>

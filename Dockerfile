@@ -29,6 +29,7 @@ ADD nginx.conf nginx.conf
 WORKDIR /var/www/html
 ADD index.html index.html
 ADD maestro.jpg maestro.jpg
+ADD maestro.css maestro.css
 ADD back.jpg back.jpg
 
 WORKDIR /etc/confd
