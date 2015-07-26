@@ -20,7 +20,7 @@ div.normal {
   font-size: 15px;
   font-weight: bold;
   text-shadow: 1px 6px 9px #000;
-  color: #588aab;
+  color: #b8b8b8;
   margin-top: 2px;
   margin-left: 5px;
 }
@@ -57,6 +57,10 @@ span.grey {
 }
 span.green {
   color: #758664;
+}
+
+span.blue {
+  color: #588aab;
 }
 
 div.defaultclickable {
