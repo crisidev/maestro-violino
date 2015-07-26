@@ -10,15 +10,34 @@ html,body {
   -o-background-size: cover;      /* Opera*/
   background-size: cover;         /* Generic*/
 }
+div.title {
+  position:relative;
+  font-family: "Helvetica Nueue", Helvetica;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 1px 6px 9px #000;
+  color: #b8b8b8;
+  margin-top: 5px;
+}
+div.normal {
+  position:relative;
+  font-family: "Helvetica Nueue", Helvetica;
+  font-size: 15px;
+  font-weight: bold;
+  text-shadow: 1px 6px 9px #000;
+  color: #588aab;
+  margin-top: 2px;
+  margin-left: 5px;
+}
 div.clickable {
   position:relative;
   font-family: "Helvetica Nueue", Helvetica;
   font-size: 20px;
   font-weight: bold;
   text-shadow: 1px 6px 9px #000;
-  color: #b8b8b8;
+  color: #758664;
   margin-top: 15px;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 div.clickable a {
   position:absolute;
@@ -32,35 +51,25 @@ div.clickable a {
   opacity: 0; /*workaround to make clickable in IE */
   filter: alpha(opacity=1); /*workaround to make clickable in IE */
 }
-.icon-list, .icon-list li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+ul {
+  list-style-type: none;
 }
-.icon-list li {
-  margin: 1em;
-  margin-left: 3em;
-}
-.icon-list li:before {
-  content: '\f006'; /* fa-star */
-  font-family: 'FontAwesome';
-  float: left;
-  margin-left: -1.5em;
-  color: #0074D9;
+span {
+  color: #b8b8b8;
 }
     </style>
   </head>
   <body>
-  <ul class="icon-list">
-    {{range gets "/maestro.io/apps/*"}}
-{{$upstream := json .Value}}
-{{$skydnsdir := printf "%s/*" $upstream.watchdir}}{{range gets $skydnsdir}}
-{{$skydnsrr := json .Value}}{{$skydnstext := json $skydnsrr.text}}
-{{if $skydnstext.dnscustom}}
-{{.Key}}<br>
-{{end}}
-{{end}}
-{{end}}
-  </ul>
+<center><div class="title">Maestro User Apps</div></center>
+{{range gets "/maestro.io/apps/user/*"}}{{$upstream := json .Value}}{{$skydnsdir := printf "%s/*" $upstream.watchdir}}
+{{range gets $skydnsdir}}
+{{$rr := json .Value}}{{$txt := json $rr.text}}
+   <div class="clickable"><a href="http://{{$txt.dnscustom}}"> </a>
+  {{$txt.dnscustom}}
+   </div>
+   <div class="normal">
+  <span>user:</span> {{$txt.username}} <span>stage:</span> {{$txt.stage}} <span>app:</span> {{$txt.app}} <span>component:</span> {{$txt.component}}
+   </div>
+{{end}}{{end}}
   </body>
 </html>
