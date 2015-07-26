@@ -12,11 +12,13 @@ RUN mkdir -p /etc/confd/conf.d /etc/confd/templates
 
 WORKDIR /etc/confd/conf.d
 ADD nginx.toml nginx.toml
-ADD scraper.toml scraper.toml
+ADD user-scraper.toml user-scraper.toml
+ADD system-scraper.toml system-scraper.toml
 
 WORKDIR /etc/confd/templates
 ADD nginx.tmpl nginx.tmpl
-ADD scraper.tmpl scraper.tmpl
+ADD user-scraper.tmpl user-scraper.tmpl
+ADD system-scraper.tmpl system-scraper.tmpl
 
 WORKDIR /etc/nginx/sites-available
 ADD default.conf default
