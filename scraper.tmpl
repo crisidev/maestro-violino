@@ -56,7 +56,7 @@ div.clickable a {
 {{$upstream := json .Value}}
 {{$skydnsdir := printf "%s/*" $upstream.watchdir}}{{range gets $skydnsdir}}
 {{$skydnsrr := json .Value}}{{$skydnstext := json $skydnsrr.text}}
-{{if $stydnstext.dnscustom}}
+{{if $skydnstext.dnscustom}}
 {{.Key}}<br>
 {{end}}
 {{end}}
