@@ -9,7 +9,7 @@ dest = "/var/www/html/apps.html"
 
 # The etcd keys or directory to watch.  This is where the information to fill in
 # the template will come from.
-keys = [ "/maestro.io/apps" ]
+keys = [ "/maestro.io/apps", "/skydns/io/maestro" ]
 
 # File ownership and mode information
 owner = "root"

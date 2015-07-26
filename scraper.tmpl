@@ -53,6 +53,11 @@ div.clickable a {
   <body>
   <ul class="icon-list">
 {{range gets "/maestro.io/apps/*"}}
+{{$upstream := json .Value}}
+{{$skydnsdir := printf "%s/*" $upstream.watchdir}}{{range gets $skydnsdir}}
+{{$skydnsrr := json .Value}}{{$skydnsrr.text}}
+
+{{end}}
   <li><div class="clickable"><a href="http://{{base .Key}}.maestro.io"> </a>{{base .Key}}.maestro.io</div></li>
 {{end}}
   </ul>
