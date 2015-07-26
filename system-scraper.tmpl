@@ -13,11 +13,9 @@
 {{$rr := json .Value}}{{$txt := json $rr.text}}
    <div class="normal">
 {{if $txt.global}}
-  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$t
-xt.component}} <span class="blue">dns:</span> {{printf "%s.%s" $txt.node $txt.dns}} <span class="blue">ip:</span> {{$rr.host}}
+  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class="blue">dns:</span> {{printf "%s.%s" $txt.node $txt.dns}} <span class="blue">ip:</span> {{$rr.host}}
 {{else}}
-  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$t
-xt.component}} <span class="blue">dns:</span> {{printf "%g.%s" $txt.id $txt.dns}} <span class="blue">ip:</span> {{$rr.host}}
+  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class="blue">dns:</span> {{printf "%g.%s" $txt.id $txt.dns}} <span class="blue">ip:</span> {{$rr.host}}
 {{end}}
    </div>
 {{end}}{{end}}
