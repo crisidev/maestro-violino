@@ -2,7 +2,7 @@
 set -e
 
 export ETCD_PORT=${ETCD_PORT:-2379}
-export ETCD_HOST=${ETCD_HOST:-etcd.local.maestro.io}
+export ETCD_HOST=${ETCD_HOST:-${MAESTRO_NODE}.maestro.io}
 export ETCD=http://$ETCD_HOST:$ETCD_PORT
 
 echo "[nginx] booting container. etcd: $ETCD."
