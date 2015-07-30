@@ -21,7 +21,8 @@
 {{end}}
    </div>
 {{end}}{{end}}
-
+  <br>
+  <center><div class="title">Backends</div></center>
 {{range gets "/maestro.io/apps/backends/*"}}{{$upstream := json .Value}}{{$skydnsdir := printf "%s/*" $upstream.watchdir}}
 {{$dns := base .Key}}
 {{range gets $skydnsdir}}
