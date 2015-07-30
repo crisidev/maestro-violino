@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="maestro.css">
   </head>
   <body>
-<center><div class="title">Maestro System DNS - {{$node}}</div></center>
+<center><div class="title">Maestro User Apps - {{$node}}</div></center>
 {{range gets "/maestro.io/apps/user/*"}}{{$upstream := json .Value}}{{$skydnsdir := printf "%s/*" $upstream.watchdir}}
 {{$dns := base .Key}}
    <div class="clickable"><a href="http://{{$dns}}.maestro.io"> </a>
@@ -13,15 +13,13 @@
    </div>
 {{range gets $skydnsdir}}
 {{$rr := json .Value}}{{$txt := json $rr.text}}
-{{if eq $txt.node $node}}
    <div class="normal">
 {{if $txt.global}}
-  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class`="blue">dns:</span> {{printf "%s.%s" $txt.node $txt.dns}} <span class="blue">ip:</span> {{$rr.host}} <a href="/logs/name:{{$txt.username}}_{{$txt.stage}}_{{$txt.app}}_{{$txt.component}}{{$txt.id}}">LOGS</a>
+  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class`="blue">dns:</span> {{printf "%s.%s" $txt.node $txt.dns}} <span class="blue">ip:</span> {{$rr.host}} - <a href="/logs/name:{{$txt.username}}_{{$txt.stage}}_{{$txt.app}}_{{$txt.component}}{{$txt.id}}">LOGS</a>
 {{else}}
-  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class="blue">dns:</span> {{printf "%g.%s" $txt.id $txt.dns}} <span class="blue">ip:</span> {{$rr.host}} <a href="/logs/name:{{$txt.username}}_{{$txt.stage}}_{{$txt.app}}_{{$txt.component}}{{$txt.id}}">LOGS</a>
+  <span class="blue">user:</span> {{$txt.username}} <span class="blue">stage:</span> {{$txt.stage}} <span class="blue">app:</span> {{$txt.app}} <span class="blue">component:</span> {{$txt.component}} <span class="blue">dns:</span> {{printf "%g.%s" $txt.id $txt.dns}} <span class="blue">ip:</span> {{$rr.host}} - <a href="/logs/name:{{$txt.username}}_{{$txt.stage}}_{{$txt.app}}_{{$txt.component}}{{$txt.id}}">LOGS</a>
 {{end}}
    </div>
-{{end}}
 {{end}}{{end}}
   </body>
 </html>
