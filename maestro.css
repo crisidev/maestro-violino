@@ -86,3 +86,7 @@ div.defaultclickable a {
   opacity: 0; /*workaround to make clickable in IE */
   filter: alpha(opacity=1); /*workaround to make clickable in IE */
 }
+
+a {
+  color: aquamarine;
+}
